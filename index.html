@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Barbearia Oliveira</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .main .services ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+
+        .main .services ul li {
+            background-color: #333;
+            padding: 10px;
+            margin: 0 10px 0 0;
+            min-width: 200px;
+            flex-shrink: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .header img {
+            width: 50px;
+        }
+
+        .main {
+            margin-top: 20px;
+        }
+
+        .main h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .main .rating {
+            color: gold;
+        }
+
+        .main .info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: gold;
+        }
+
+        .main .info i {
+            margin-right: 10px;
+            color: gold;
+        }
+
+       .main button {
+          background-color: #ffcc00;
+          color: black;
+          border: none;
+          padding: 15px 30px;
+          cursor: pointer;
+          margin-bottom: 20px;
+          font-size: 18px; /* Aumente o tamanho da fonte */
+          border-radius: 5px;
+          width: calc(100% - 8px); /* Defina a largura com margem de 4px em cada lado */
+          box-sizing: border-box;
+        }
+
+        .main .favorite {
+          background-color: #333;
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 5px; /* Adicione esta linha para arredondar */
+        }
+        .main .whats{
+          background-color: seagreen;
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+        }
+
+        .main .services, .main .hours {
+            margin-top: 20px;
+        }
+
+        .main .services h3, .main .hours h3,.main .about h3{
+            margin-bottom: 10px;
+            color: gold;
+        }
+        
+
+        .main .services ul, .main .hours ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .main .services ul li, .main .hours ul li {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .main .about p{
+          color: white;
+        }
+
+        .main .hours ul li {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .about{
+            margin-top: 20px;
+            color: gold;
+        }
+
+        /* Estilos para o formulário de agendamento */
+        #scheduleForm {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: black;
+            z-index: 1000;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 100px auto;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-container select,
+        .form-container input[type="text"],
+        .form-container input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            background-color: #ffcc00;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        iframe{
+          height: 200px;
+          width: 100%;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .main h2 {
+                font-size: 18px;
+            }
+
+            .form-container {
+                margin: 50px auto;
+                padding: 15px;
+            }
+
+            .main button,
+            .main .favorite,
+            .main .whats {
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px; /* Ajuste o espaçamento se necessário */
+            }
+            .header h1{
+              
+              font-size: 24px;
+              margin: 0;
+            }
+
+            .header img {
+                width: 150px;
+                margin-bottom: 10px;
+            }
+
+            .main h1 {
+                font-size: 16px;
+            }
+
+            .form-container {
+                margin: 30px auto;
+                padding: 10px;
+            }
+
+            .main button,
+            .main .favorite,
+            .main .whats {
+                padding: 6px 12px;
+            }
+            .whatsapp-button {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                background-color: #25d366;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease-in-out;
+            }
+
+                .whatsapp-button img {
+                    width: 40px;
+                    height: 40px;
+                }
+                
+                .whatsapp-button:hover {
+                    transform: scale(1.1);
+                }
+                .parallax {
+        background-image: url('essa.jpg'); /* Coloque aqui a URL da sua imagem */
+        height: 300px; /* Ajuste a altura conforme necessário */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain; /* Altere para 'contain' para exibir a imagem inteira */
+        margin: 20px 0; /* Espaçamento entre os botões */
+    }
+
+    @media (max-width: 768px) {
+        .parallax {
+            height: 200px; /* Ajuste a altura para telas menores, se necessário */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .parallax {
+            height: 150px; /* Ajuste a altura para telas menores, se necessário */
+        }
+    }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="Default_A_strikingly_detailed_pop_art_logo_for_Barbearia_Olive_2.jpg" alt="Logo">
+            <h1>Barbearia Oliveira</h1>
+        </div>
+        <div class="main">
+           
+            <div class="rating">
+                <i class="fas fa-star"></i> 5.0
+            </div>
+            <div class="info">
+                <i class="fas fa-map-marker-alt"></i> Av. Rui Pinto Bandeira, 2173-2103 - Rui Pinto Bandeira, Cachoeiro de Itapemirim - ES
+            </div>
+            <div class="info">
+                <i class="fas fa-clock"></i> Garanta seu horário agora antes que ele seja agendado!
+            </div>
+            <div class="info">
+                <i class="fas fa-phone"></i> (28) 999965464
+            </div>
+            <a  href="https://wa.me/5528999965464" class="whatsapp-button" target="_blank">
+           <img src="whatsapp-icone-1.png" alt="WhatsApp">
+           </a>
+            <button onclick="openLink()">Agendar um horário</button>
+            <!-- Parallax Section -->
+<div class="parallax"></div>
+            <button onclick="openInstagram()" class="favorite">Instagram</button>
+            
+           <div class="hours">
+             
+             <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3728.789820536009!2d-41.18474590639295!3d-20.840192102760575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDUwJzI0LjEiUyA0McKwMTAnNTcuNCJX!5e0!3m2!1spt-BR!2sbr!4v1720063590469!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+             
+           </div>
+            <div class="services">
+                <h3>Serviços</h3>
+                <ul>
+                    <li>01 - Corte: R$ 35,00</li>
+                    <li>02 - Barba: R$ 35,00</li>
+                    <li>03 - Barba e Corte: R$ 40,00</li>
+                </ul>
+            </div>
+            <div class="hours">
+                <h3>Horários</h3>
+                <ul>
+                    <li>Segunda Feira: <span>08:00 - 17:00</span></li>
+                    <li>Terça Feira: <span>08:00 - 17:00</span></li>
+                    <li>Quarta Feira: <span>08:00 - 17:00</span></li>
+                    <li>Quinta Feira: <span>08:00 - 17:00</span></li>
+                    <li>Sexta Feira: <span>08:00 - 17:00</span></li>
+                    <li>Sábado: <span>08:00 - 17:00</span></li>
+                    <li>Domingo: <span>Fechado</span></li>
+                </ul>
+            </div>
+            <div class="about">
+                <h3>Sobre</h3>
+                <p>Barbearia bem localizada, atendimento excelente, lembre-se de chegar 10 minutos mais cedo para evitar qualquer contra tempo.</p>
+            </div>
+        </div>
+
+        <!-- Formulário de agendamento -->
+        <div id="scheduleForm">
+            <div class="form-container">
+                <h2>Agendar um Horário</h2>
+                <label for="serviceSelect">Serviço:</label>
+                <select id="serviceSelect">
+                    <option value="Corte">Corte</option>
+                    <option value="Barba">Barba</option>
+                    <option value="Barba e Corte">Barba e Corte</option>
+                </select>
+
+                <label for="dateInput">Data:</label>
+                <input type="date" id="dateInput">
+
+                <label for="timeSelect">Horário:</label>
+                <select id="timeSelect">
+                    <!-- Opções de horário -->
+                </select>
+
+                <button id="confirmButton">Confirmar</button>
+                <button id="closeButton">Voltar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openLink() {
+            window.location.href = 'https://calendly.com/rcardozo099/barbearia_oliveira____';
+        }
+        function openInstagram() {
+          window.location.href = 'https://www.instagram.com/barbearia_oliveira93?igsh=MThvaXRzenU2YjJrdg==';
+        }
+        function openWhats() {
+          window.location.href = 'https://wa.me/5528999965464';
+        }
+        
+    </script>
+</body>
+</html>
